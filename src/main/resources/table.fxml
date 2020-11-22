@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="844.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/8.0.271"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.vmk.shahova.databaseUi.ui.page.Controller">
+    <children>
+        <MenuBar layoutX="3.0" layoutY="7.0" prefHeight="29.0" prefWidth="617.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TableView fx:id="catalogDetails" layoutX="15.0" layoutY="183.0" prefHeight="156.0" prefWidth="562.0">
+            <columns>
+                <TableColumn fx:id="kod_details" prefWidth="75.0" text="kod_details"/>
+                <TableColumn fx:id="type_details" prefWidth="75.0" text="type_details"/>
+                <TableColumn fx:id="name_details" prefWidth="75.0" text="name_details"/>
+                <TableColumn fx:id="init" prefWidth="75.0" text="init"/>
+                <TableColumn fx:id="price_details" prefWidth="75.0" text="price_details"/>
+            </columns>
+        </TableView>
+        <TableView fx:id="contract" layoutX="14.0" layoutY="359.0" prefHeight="140.0" prefWidth="555.0">
+            <columns>
+                <TableColumn fx:id="number_contract" prefWidth="75.0" text="number_contract"/>
+                <TableColumn fx:id="kod_supplier" prefWidth="75.0" text="kod_supplier"/>
+                <TableColumn fx:id="data_contract" prefWidth="75.0" text="data_contract"/>
+            </columns>
+        </TableView>
+        <TableView fx:id="supply" layoutX="14.0" layoutY="517.0" prefHeight="140.0" prefWidth="574.0">
+            <columns>
+                <TableColumn fx:id="number_contract1" prefWidth="75.0" text="number_contract1"/>
+                <TableColumn fx:id="kod_details1" prefWidth="75.0" text="kod_details1"/>
+                <TableColumn fx:id="init1" prefWidth="75.0" text="init1"/>
+                <TableColumn fx:id="start_date" prefWidth="75.0" text="start_date"/>
+                <TableColumn fx:id="end_date" prefWidth="75.0" text="end_date"/>
+                <TableColumn fx:id="plan" prefWidth="75.0" text="plan"/>
+                <TableColumn fx:id="price" prefWidth="75.0" text="unit_price"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
