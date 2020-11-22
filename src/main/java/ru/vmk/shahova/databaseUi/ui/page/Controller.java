@@ -1,11 +1,14 @@
 package ru.vmk.shahova.databaseUi.ui.page;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.util.converter.DateStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -17,15 +20,33 @@ import java.util.Date;
 public class Controller implements Initializable {
     private Label label;
     @FXML
-    private TextField tfCod;
+    private TextField tfKod;
     @FXML
-    private TextField tftype;
+    private TextField tfType;
     @FXML
     private TextField tfName;
     @FXML
     private TextField tfInit;
     @FXML
     private TextField tfPrice;
+    @FXML
+    private TextField minPrice;
+
+    @FXML
+    private Button btnUpdate;
+    @FXML
+    private Button btnDelete;
+    @FXML
+    private Button btnInsert;
+    @FXML
+    private Button btnExecute;
+
+    //language=SQL
+    private static final String INSERT_CATALOG_QUERY = "INSERT INTO catalog_details (kod_details, type_details, name_details, init, price_details) VALUES ('%s','%s','%s','%s','%s')";
+    //    language=SQL
+    private static final String UPDATE_CATALOG_QUERY = "UPDATE catalog_details SET type_details = '%s', name_details = '%s',init='%s',price_details='%s' WHERE kod_details = '%s'";
+    //language=SQL
+    private static final String DELETE_CATALOG_QUERY = "DELETE FROM catalog_details WHERE kod_details = '%s'";
 
     @FXML
     private TableView<Catalog> catalogDetails;
@@ -65,7 +86,6 @@ public class Controller implements Initializable {
     private TableColumn<Supply, Integer> plan;
     @FXML
     private TableColumn<Supply, Integer> price;
-
 
 
     private Queue<String> statements = new ArrayDeque<>();
@@ -113,6 +133,10 @@ public class Controller implements Initializable {
         plan.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         price.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
+        btnInsert.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> insertRecord());
+        btnUpdate.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> updateRecord());
+        btnDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> deleteRecord());
+        btnExecute.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> executeProcedure());
     }
 
     private static final String url = "jdbc:postgresql://127.0.0.1:5433/postgres";
@@ -200,13 +224,96 @@ public class Controller implements Initializable {
                         rs.getDate("end_date"),
                         rs.getInt("plan"),
                         rs.getInt("unit_price")
-                        );
+                );
                 supplyList.add(supply);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return supplyList;
+    }
+
+    private void executeProcedure() {
+        String result = "";
+        try {
+            Integer minPrice = Integer.parseInt(this.minPrice.getText());
+            String query = "SELECT m('" + minPrice + "');";
+            Connection conn = getConnection();
+            Statement st;
+            st = conn.createStatement();
+            st.execute(query);
+            ResultSet rs = st.getResultSet();
+            while (rs.next()) {
+                result += "," + rs.getString(1);
+            }
+            this.minPrice.setText(result);
+        }
+        catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    private void insertRecord() {
+        String query = String.format(INSERT_CATALOG_QUERY, tfKod.getText(), tfType.getText(), tfName.getText(), tfInit.getText(), tfPrice.getText());
+        try {
+            executeQuery(query);
+            catalogDetails.getItems().add(new Catalog(
+                    Integer.parseInt(tfKod.getText()),
+                    tfType.getText(),
+                    tfName.getText(),
+                    tfInit.getText(),
+                    Integer.parseInt(tfPrice.getText()))
+            );
+        }
+        catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+    private void updateRecord() {
+        String query = String.format(UPDATE_CATALOG_QUERY, tfType.getText(), tfName.getText(), tfInit.getText(), tfPrice.getText(), tfKod.getText());
+        try {
+            executeQuery(query);
+            Optional<Catalog> catalogOptional = catalogDetails.getItems()
+                    .filtered(item -> item.getDetailCode() == Integer.parseInt(tfKod.getText()))
+                    .stream()
+                    .findFirst();
+
+            if (catalogOptional.isPresent()) {
+                int index = catalogDetails.getItems().indexOf(catalogOptional.get());
+                Catalog catalog = catalogOptional.get();
+                catalog.setInit(tfInit.getText());
+                catalog.setType(tfType.getText());
+                catalog.setName(tfName.getText());
+                catalog.setPrice(Integer.parseInt(tfPrice.getText()));
+                catalogDetails.getItems().set(index, catalog);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    private void deleteRecord() {
+       Catalog catalog = catalogDetails.getSelectionModel().getSelectedItem();
+       if(catalog != null) {
+           String query = String.format(DELETE_CATALOG_QUERY,catalog.getDetailCode());
+            try{
+                executeQuery(query);
+                catalogDetails.getItems()
+                        .removeIf(item -> item.getDetailCode() == catalog.getDetailCode());
+            }catch(SQLException e){
+                e.printStackTrace();
+
+           }
+
+       }
+
+    }
+
+    private void executeQuery(String query) throws SQLException {
+        Connection conn = getConnection();
+        Statement st;
+        st = conn.createStatement();
+        st.executeUpdate(query);
     }
 
 }
