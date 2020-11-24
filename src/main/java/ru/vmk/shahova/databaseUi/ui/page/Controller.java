@@ -46,7 +46,7 @@ public class Controller implements Initializable {
     //    language=SQL
     private static final String UPDATE_CATALOG_QUERY = "UPDATE catalog_details SET type_details = '%s', name_details = '%s',init='%s',price_details='%s' WHERE kod_details = '%s'";
     //language=SQL
-    private static final String DELETE_CATALOG_QUERY = "DELETE FROM catalog_details WHERE kod_details = '%s'";
+    private static final String DELETE_CATALOG_QUERY = "DELETE FROM catalog_details WHERE kod_details = '%s' CASCADE ";
 
     @FXML
     private TableView<Catalog> catalogDetails;
