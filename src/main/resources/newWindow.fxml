@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.vmk.shahova.databaseUi.ui.page.Controller1">
+   <children>
+      <TableView fx:id="resultTable" layoutX="148.0" layoutY="85.0" prefHeight="200.0" prefWidth="304.0">
+        <columns>
+          <TableColumn fx:id="tfKod" prefWidth="75.0" text="Kod" />
+          <TableColumn fx:id="tfName" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="tfPrice" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="tfPlan" prefWidth="75.0" text="Plan" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

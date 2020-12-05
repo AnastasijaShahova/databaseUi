@@ -14,6 +14,7 @@ public class Contract {
         this.date = date;
     }
 
+
     public Integer getNumber() {
         return number;
     }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -12,25 +10,6 @@
 
 <AnchorPane prefHeight="846.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.vmk.shahova.databaseUi.ui.page.Controller">
     <children>
-        <MenuBar prefHeight="29.0" prefWidth="630.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
         <TableView fx:id="catalogDetails" layoutX="14.0" layoutY="57.0" prefHeight="229.0" prefWidth="555.0">
             <columns>
                 <TableColumn fx:id="kod_details" prefWidth="75.0" text="kod_details" />
@@ -58,9 +37,9 @@
                 <TableColumn fx:id="price" prefWidth="75.0" text="unit_price" />
             </columns>
         </TableView>
-      <Button fx:id="btnUpdate" layoutX="14.0" layoutY="739.0" mnemonicParsing="false" text="Update" />
-      <Button fx:id="btnDelete" layoutX="77.0" layoutY="739.0" mnemonicParsing="false" text="Delete" />
-      <Button fx:id="btnInsert" layoutX="753.0" layoutY="273.0" mnemonicParsing="false" text="Insert" />
+      <Button fx:id="btnUpdate" layoutX="633.0" layoutY="273.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="btnDelete" layoutX="718.0" layoutY="273.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="btnInsert" layoutX="790.0" layoutY="273.0" mnemonicParsing="false" text="Insert" />
       <TextField fx:id="tfKod" layoutX="679.0" layoutY="82.0" />
       <TextField fx:id="tfType" layoutX="679.0" layoutY="123.0" />
       <TextField fx:id="tfName" layoutX="679.0" layoutY="158.0" />
@@ -74,5 +53,34 @@
       <TextField fx:id="minPrice" layoutX="408.0" layoutY="739.0" />
       <Text layoutX="316.0" layoutY="757.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price more then" />
       <Button fx:id="btnExecute" layoutX="249.0" layoutY="739.0" mnemonicParsing="false" text="Execute" />
+      <TextField fx:id="tfNumber" layoutX="679.0" layoutY="333.0" />
+      <TextField fx:id="tfKodd" layoutX="679.0" layoutY="370.0" />
+      <TextField fx:id="tfKod3" layoutX="679.0" layoutY="407.0" />
+      <Text layoutX="608.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number" />
+      <Text layoutX="621.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kodd" />
+      <Text layoutX="617.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+      <DatePicker fx:id="tfDate" layoutX="651.0" layoutY="407.0" />
+      <TextField fx:id="tfNumber1" layoutX="673.0" layoutY="521.0" />
+      <TextField fx:id="tfKod1" layoutX="673.0" layoutY="556.0" />
+      <TextField fx:id="tfInit1" layoutX="673.0" layoutY="595.0" />
+      <Text layoutX="608.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number1" />
+      <Text layoutX="624.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kod1" />
+      <Text layoutX="628.0" layoutY="613.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Init1" />
+      <DatePicker fx:id="tfStartDate" layoutX="651.0" layoutY="633.0" />
+      <DatePicker fx:id="tfEndDate" layoutX="651.0" layoutY="667.0" />
+      <TextField fx:id="tfPlan" layoutX="679.0" layoutY="701.0" />
+      <TextField fx:id="tfPrice1" layoutX="679.0" layoutY="735.0" />
+      <Button fx:id="btnInsert1" layoutX="785.0" layoutY="446.0" mnemonicParsing="false" text="Insert" />
+      <Button fx:id="btnInsert2" layoutX="785.0" layoutY="774.0" mnemonicParsing="false" text="Insert" />
+      <Text layoutX="590.0" layoutY="649.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StartData" />
+      <Text layoutX="590.0" layoutY="685.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EndData" />
+      <Text layoutX="628.0" layoutY="719.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plan" />
+      <Text layoutX="627.0" layoutY="754.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price1" />
+      <Button fx:id="btnSelect" layoutX="249.0" layoutY="782.0" mnemonicParsing="false" text="Select" />
+      <Button fx:id="btnDelete1" layoutX="720.0" layoutY="446.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="btnUpdate1" layoutX="646.0" layoutY="446.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="btnDelete2" layoutX="715.0" layoutY="774.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="btnUpdate2" layoutX="635.0" layoutY="774.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="btnSelectSelect" layoutX="331.0" layoutY="782.0" mnemonicParsing="false" text="SelectSelect" />
     </children>
 </AnchorPane>
