@@ -32,8 +32,8 @@ public class Controller2 implements Initializable {
         resultTable.setItems(FXCollections.observableList(results));
         tfKood.setCellValueFactory(new PropertyValueFactory<>("detailCode"));
         tfName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tfPlan.setCellValueFactory(new PropertyValueFactory<>("price"));
-        tfPrice.setCellValueFactory(new PropertyValueFactory<>("plan"));
+        tfPlan.setCellValueFactory(new PropertyValueFactory<>("plan"));
+        tfPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         tfKood.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         tfName.setCellFactory(TextFieldTableCell.forTableColumn());

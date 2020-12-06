@@ -525,7 +525,7 @@ public class Controller implements Initializable {
             Result result = new Result(
                     supplies.get(i).getDetailCode(),
                     catalogs.get(i).getName(),
-                    supplies.get(i).getPrice(),
+                    catalogs.get(i).getPrice(),
                     supplies.get(i).getPlan()
             );
             resultList.add(result);

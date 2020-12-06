@@ -32,7 +32,7 @@ public class Controller1 implements Initializable {
     private TableView<Result> resultTable;
 
     //language=SQL
-    private static final String SELECT_BY_DATE = "SELECT kod_supplier, name_details, price_details, plan " +
+    private static final String SELECT_BY_DATE = "SELECT sd.kod_details, name_details, price_details, plan " +
             "FROM catalog_details " +
             "         LEFT JOIN supply_details sd on catalog_details.kod_details = sd.kod_details " +
             "         LEFT JOIN contract_supplier cs on sd.number_contract = cs.number_contract " +
@@ -43,8 +43,8 @@ public class Controller1 implements Initializable {
         resultTable.setItems(FXCollections.observableList(getByDate()));
         tfKod.setCellValueFactory(new PropertyValueFactory<>("detailCode"));
         tfName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tfPlan.setCellValueFactory(new PropertyValueFactory<>("price"));
-        tfPrice.setCellValueFactory(new PropertyValueFactory<>("plan"));
+        tfPlan.setCellValueFactory(new PropertyValueFactory<>("plan"));
+        tfPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         tfKod.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         tfName.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -63,7 +63,7 @@ public class Controller1 implements Initializable {
             Result result;
             while (rs.next()) {
                 result = new Result(
-                        rs.getInt("kod_supplier"),
+                        rs.getInt("kod_details"),
                         rs.getString("name_details"),
                         rs.getInt("price_details"),
                         rs.getInt("plan"));
