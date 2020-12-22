@@ -28,7 +28,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
-import javax.swing.JOptionPane;
 
 
 public class DynamicTable extends Application {

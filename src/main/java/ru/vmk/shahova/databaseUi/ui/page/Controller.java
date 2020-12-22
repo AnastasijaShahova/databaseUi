@@ -86,6 +86,14 @@ public class Controller implements Initializable {
     private Button btnDelete2;
     @FXML
     private Button btnSelectSelect;
+    @FXML
+    private Button btnUnion;
+
+    @FXML
+    private Button btnZad3;
+
+
+
 
     //language=SQL
     private static final String INSERT_CATALOG_QUERY = "INSERT INTO catalog_details (kod_details, type_details, name_details, init, price_details) VALUES ('%s','%s','%s','%s','%s')";
@@ -156,6 +164,8 @@ public class Controller implements Initializable {
         catalogDetails.setItems(FXCollections.observableList(getCatalog()));
         btnSelect.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> openResultQuery());
         btnSelectSelect.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> openResultQuery1());
+        btnUnion.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> openResultQuery3());
+
         kod_details.setCellValueFactory(new PropertyValueFactory<>("detailCode"));
         type_details.setCellValueFactory(new PropertyValueFactory<>("type"));
         name_details.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -206,6 +216,7 @@ public class Controller implements Initializable {
         btnDelete1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> deleteRecord1());
         btnDelete2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> deleteRecord2());
         btnExecute.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> executeProcedure());
+
     }
 
     private static final String url = "jdbc:postgresql://127.0.0.1:5433/postgres";
@@ -544,4 +555,18 @@ public class Controller implements Initializable {
             exc.printStackTrace();
         }
     }
+    private static void openResultQuery3() {
+        Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/ResWindow.fxml"));
+        try {
+            Parent root = loader.load();
+            dialog.setScene(new Scene(root, 1000, 1000));
+            dialog.show();
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+    }
+
+
 }

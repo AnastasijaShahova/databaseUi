@@ -82,5 +82,8 @@
       <Button fx:id="btnDelete2" layoutX="715.0" layoutY="774.0" mnemonicParsing="false" text="Delete" />
       <Button fx:id="btnUpdate2" layoutX="635.0" layoutY="774.0" mnemonicParsing="false" text="Update" />
       <Button fx:id="btnSelectSelect" layoutX="331.0" layoutY="782.0" mnemonicParsing="false" text="SelectSelect" />
+      <Button fx:id="btnUnion" layoutX="42.0" layoutY="739.0" mnemonicParsing="false" text="Union" />
+      <Button fx:id="btnZad2" layoutX="40.0" layoutY="782.0" mnemonicParsing="false" text="Zadacha2" />
+      <Button fx:id="btnZad3" layoutX="144.0" layoutY="782.0" mnemonicParsing="false" text="Zadacha3" />
     </children>
 </AnchorPane>

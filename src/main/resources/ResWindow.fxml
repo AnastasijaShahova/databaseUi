@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.vmk.shahova.databaseUi.ui.page.Controller3">
+   <children>
+      <TableView fx:id="tableItog" layoutX="10.0" layoutY="106.0" prefHeight="200.0" prefWidth="909.0">
+        <columns>
+          <TableColumn fx:id="tfKod" prefWidth="75.0" text="kod_details" />
+          <TableColumn fx:id="tfType" prefWidth="75.0" text="type" />
+            <TableColumn fx:id="tfName" prefWidth="75.0" text="name" />
+            <TableColumn fx:id="tfInit" prefWidth="75.0" text="init" />
+            <TableColumn fx:id="tfPrice" prefWidth="75.0" text="price" />
+            <TableColumn fx:id="tfNumber" prefWidth="75.0" text="number" />
+            <TableColumn fx:id="tfKodSup" prefWidth="75.0" text="kod_supplier" />
+            <TableColumn fx:id="tfDate" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="tfStart" prefWidth="75.0" text="startDate" />
+            <TableColumn fx:id="tfEnd" prefWidth="75.0" text="endDate" />
+            <TableColumn fx:id="tfPlan" prefWidth="75.0" text="plan" />
+            <TableColumn fx:id="tfUnit" prefWidth="75.0" text="unit_price" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnZad2" layoutX="283.0" layoutY="328.0" mnemonicParsing="false" text="Zad2" />
+   </children>
+</AnchorPane>
